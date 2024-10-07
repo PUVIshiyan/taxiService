@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Driver;
 use Illuminate\Http\Request;
 
 class DriverController extends Controller
@@ -11,7 +12,8 @@ class DriverController extends Controller
      */
     public function index()
     {
-        //
+        $drivers=Driver::all();
+        return view('driver.index',compact('drivers'));
     }
 
     /**
@@ -19,7 +21,7 @@ class DriverController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +37,8 @@ class DriverController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $driver=Driver::find($id);
+        return view('driver.show',compact('driver'));
     }
 
     /**
@@ -59,6 +62,8 @@ class DriverController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $driver=Driver::find($id);
+        $driver->delete();
+        return redirect('drivers');
     }
 }

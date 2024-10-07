@@ -1,7 +1,10 @@
 <?php
+
+use App\Http\Controllers\DriverController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
+use App\Models\Driver;
 use App\Models\Grade;
 use App\Models\Student;
 use App\Models\Subject;
@@ -116,3 +119,19 @@ Route::get('/', function () {
 // Route::resource('students',StudentController::class);
 // Route::resource('subjects',SubjectController::class);
 // Route::resource('grades',GradeController::class);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::resource('drivers',DriverController::class);
