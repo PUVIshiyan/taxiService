@@ -3,6 +3,9 @@
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Middleware\Role;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,6 +24,12 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::resource('drivers',DriverController::class);
-Route::get('/admin.Dashboard',function(){
-    return view('pages.index');
+
+// Route::get('/admin.Dashboard',function(){
+//     return view('pages.index');
+// });
+
+
+Route::middleware(['auth','role:admin'])->group(function(){
+    Route::get('/admin/dashboard',[AdminController::class,'AdminDashboard'])->name('admin.dashboard');
 });
